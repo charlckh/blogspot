@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 
 function App() {
@@ -14,16 +13,7 @@ function App() {
     loadData();
   }, []);
 
-  function PostList(props) {
-    return (
-      <ul>
-        {props.posts.map(post => (
-          <li key={post.id}>{post.title}</li>
-        ))}
-      </ul>
-    );
-  }
-  function loadNextPosts() {
+  const loadNextPosts = () => {
     setCurrentIndex(currentIndex + 5);
     async function loadData() {
       const response = await fetch('https://jsonplaceholder.typicode.com/posts');
@@ -31,15 +21,19 @@ function App() {
       setPosts(posts.concat(data.slice(currentIndex, currentIndex + 5)));
     }
     loadData();
-  }
+  };
 
   return (
     <div>
-      <PostList posts={posts} />
+      <h1>Blog Posts</h1>
+      <ul>
+        {posts.map(post => (
+          <li key={post.id}>{post.title}</li>
+        ))}
+      </ul>
       <button onClick={loadNextPosts}>Load more posts</button>
     </div>
   );
 }
-
 
 export default App;
