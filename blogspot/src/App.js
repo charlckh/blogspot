@@ -1,6 +1,7 @@
+
 import React, { useState, useEffect } from 'react';
 
-function BlogPosts() {
+function App() {
   const [posts, setPosts] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -40,4 +41,5 @@ function BlogPosts() {
   );
 }
 
-export default BlogPosts;
+
+export default App;
